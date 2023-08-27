@@ -59,6 +59,7 @@
       
       var card = document.createElement('div');
       card.class = "card";
+      card.setAttribute("class","card");
       
           var img = document.createElement('img');
           img.src = json.Products[i].URL;
@@ -80,10 +81,10 @@
       card_title.setAttribute("class","card-title");
       
       var head = document.createElement('h3');
-      head.innerText = json.Products.TITLE;
+      head.innerText = json.Products[i].TITLE;
       
       var paragraph = document.createElement('p');
-      paragraph.innerText = json.Products.desc;
+      paragraph.innerText = json.Products[i].desc;
       
       card_title.appendChild(head);
       card_title.appendChild(paragraph);
