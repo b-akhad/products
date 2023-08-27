@@ -29,12 +29,13 @@
       <button>Buy Now</button>
     </div>
    
-    
+
     <script type="text/javascript">
       fetch('json/products.json').then(function(response) {
       response.json().then(function(json) {
       
-      var body = document.getElementsByTagName('body')
+      var body = document.getElementsByTagName('body');
+      console.log(body);
       
       
       for(var i=0; i < json.Products.length; i++){
@@ -51,6 +52,9 @@
       var card_img = document.createElement('div');
       card_img.class = "card-img";
       
+      console.log(card_img);
+      console.log(card);
+
       card_img.appendChild(img);
       card.appendChild(card_img)
       
