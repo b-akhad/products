@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Card</title>
+    <link href="style.css" rel="stylesheet" />
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+
+    <script type="text/javascript">
+      fetch('json/products.json').then(function(response) {
+  response.json().then(function(json) {
+
+  var body = document.getElementsByTagName('body')
+  var gallery = document.getElementById('gallery');
+
+	var hCaption = document.createElement('h1');
+
+  for(var i=0; i < json.Products.length; i++){
+
+    var card = document.createElement('div');
+    card.class = "card";
+
+		var img = document.createElement('img');
+		img.src = json.Products[i].URL;
+		img.alt = json.Products[i].Caption;
+		img.style = "width: 397px; height: 397px;";
+
+
+    var card_img = document.createElement('div');
+    card_img.class = "card-img";
+
+    card_img.appendChild(img);
+    card.appendChild(card_img)
+
+    var card_title = document.createElement("div");
+    card_title.class = "card-title";
+
+    var head = document.createElement('h3');
+    head.innerText = json.Products.TITLE;
+
+    var paragraph = document.createElement('p');
+    paragraph.innerText = json.Products.desc;
+
+    card_title.appendChild(head);
+    card_title.appendChild(paragraph);
+    card.appendChild(card_title);
+
+    var card_details = document.createElement('div');
+    card_details.class = 'card-details';
+
+    var price = document.createElement('span');
+
+    price.innerText = "price";
+    
+    var price_parag = document.createElement('p');
+
+    price_parag.innerText = "$140";
+
+    card_details.appendChild(price);
+    card_details.appendChild(price_parag);
+    card.appendChild(card_details);
+
+    var purchase = document.createElement('button');
+    purchase.innerText = "Buy now";
+
+    card.appendChild(purchase);
+
+  };
+
+
+});
+});
+
+
+       Telegram.WebApp.ready();
+
+       Telegram.WebApp.MainButton.setText('Choose').show().onClick(function () {
+        const data = JSON.stringify({hex: colorPicker.color.hexString, rgb: colorPicker.color.rgb});
+        Telegram.WebApp.sendData(data);
+        Telegram.WebApp.close();
+
+    });
+      
+    </script>
+
+  </head>
+  <body>
+    <div class="card">
+      <div class="card-img">
+        <img src="images/01.png" alt="01" />
+      </div>
+      <div class="card-title">
+        <h3>Versace Eros</h3>
+        <p>Eau de Toilette</p>
+      </div>
+      <div class="card-details">
+        <div class="price">
+          <span>price</span>
+          <p>$139</p>
+        </div>
+      </div>
+      <button>Buy Now</button>
+    </div>
+   
+   
+  </body>
+</html>
