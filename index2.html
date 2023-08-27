@@ -12,39 +12,7 @@
    
   </head>
   <body>
-    <div class="card">
-      <div class="card-img">
-        <img src="images/01.png" alt="01" />
-      </div>
-      <div class="card-title">
-        <h3>Versace Eros</h3>
-        <p>Eau de Toilette</p>
-      </div>
-      <div class="card-details">
-        <div class="price">
-          <span>price</span>
-          <p>$139</p>
-        </div>
-      </div>
-      <button>Buy Now</button>
-    </div>
-
-    <div class="card">
-      <div class="card-img">
-        <img src="images/01.png" alt="01" />
-      </div>
-      <div class="card-title">
-        <h3>Versace Eros</h3>
-        <p>Eau de Toilette</p>
-      </div>
-      <div class="card-details">
-        <div class="price">
-          <span>price</span>
-          <p>$139</p>
-        </div>
-      </div>
-      <button>Buy Now</button>
-    </div>
+    
    
 
     <script type="text/javascript">
@@ -64,17 +32,15 @@
           var img = document.createElement('img');
           img.src = json.Products[i].URL;
           img.alt = json.Products[i].Caption;
-          img.style = "width: 397px; height: 397px;";
       
       
       var card_img = document.createElement('div');
       card_img.class = "card-img";
+      card_img.setAttribute("class",'card-img');
       
-      console.log(card_img);
-      console.log(card);
 
       card_img.appendChild(img);
-      card.appendChild(card_img)
+      card.appendChild(card_img);
       
       var card_title = document.createElement("div");
       card_title.class = "card-title";
@@ -92,6 +58,7 @@
       
       var card_details = document.createElement('div');
       card_details.class = "card-details";
+      card_details.setAttribute('class','card-details');
       
       var price = document.createElement('span');
       
