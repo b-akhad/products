@@ -77,6 +77,7 @@
       
       var card_title = document.createElement("div");
       card_title.class = "card-title";
+      card_title.setAttribute("class","card-title");
       
       var head = document.createElement('h3');
       head.innerText = json.Products.TITLE;
@@ -89,7 +90,7 @@
       card.appendChild(card_title);
       
       var card_details = document.createElement('div');
-      card_details.class = 'card-details';
+      card_details.class = "card-details";
       
       var price = document.createElement('span');
       
