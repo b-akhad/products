@@ -50,7 +50,7 @@
     </div>
   </div>
     <script type="text/javascript">
-
+      var products = [];
       function getclickname(obj)
       {
         //By passing object as argument you can access all properties of that element
@@ -106,22 +106,19 @@
       card_footer.setAttribute("class","card-footer");
 
 
-      
       var purchase = document.createElement('button');
       purchase.innerText = "Buy now";
       purchase.onclick = doWithParam(json.Products[i].ID)
       console.log(json.Products[i].ID);
       function doWithParam( param ){
         return function(){
-            alert( param ); // <-- Your code here
+            products.push(param)
         }
         };
 
       card_footer.appendChild(purchase);
 
       card.appendChild(card_footer);
-
-
 
 
       };
@@ -133,9 +130,10 @@
       
          Telegram.WebApp.ready();
          purchase = document.getElementsByTagName("button");
-      
+
          Telegram.WebApp.MainButton.setText('Choose').show().onClick(function () {
-          const data = JSON.stringify({hex: colorPicker.color.hexString, rgb: colorPicker.color.rgb});
+
+          const data = JSON.stringify(products);
           Telegram.WebApp.sendData(data);
           Telegram.WebApp.close();
       
