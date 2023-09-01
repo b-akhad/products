@@ -12,9 +12,13 @@
    
   </head>
   <body>
-    
-   
+  <div class="container">
+    <div id="row" class="row">
 
+
+
+    </div>
+  </div>
     <script type="text/javascript">
 
       function getclickname(obj)
@@ -26,58 +30,52 @@
       fetch('json/products.json').then(function(response) {
       response.json().then(function(json) {
 
-        var body = document.getElementsByTagName('body');
-      console.log(body);
+        var row = document.getElementById('row');
+      console.log(row);
       
       
       for(var i=0; i < json.Products.length; i++){
       
-      var card = document.createElement('div');
+      var col = document.createElement('div');
+      col.class = "col-md-4 col-6 mt-5";
+      col.setAttribute("class","col-md-4 col-6 mt-5");
+
+      row.appendChild(col);
+
+
+      var card = document.createElement("div");
       card.class = "card";
       card.setAttribute("class","card");
-      
-          var img = document.createElement('img');
-          img.src = json.Products[i].URL;
-          img.alt = json.Products[i].Caption;
-      
-      
-      var card_img = document.createElement('div');
-      card_img.class = "card-img";
-      card_img.setAttribute("class",'card-img');
-      
 
-      card_img.appendChild(img);
-      card.appendChild(card_img);
-      
-      var card_title = document.createElement("div");
-      card_title.class = "card-title";
-      card_title.setAttribute("class","card-title");
-      
-      var head = document.createElement('h3');
-      head.innerText = json.Products[i].TITLE;
-      
-      var paragraph = document.createElement('p');
-      paragraph.innerText = json.Products[i].desc;
-      
-      card_title.appendChild(head);
-      card_title.appendChild(paragraph);
-      card.appendChild(card_title);
-      
-      var card_details = document.createElement('div');
-      card_details.class = "card-details";
-      card_details.setAttribute('class','card-details');
-      
-      var price = document.createElement('span');
-      
-      price.innerText = "price";
-      
-      var price_parag = document.createElement('p');
-      
-      price_parag.innerText = "$140";
-      
-      card_details.appendChild(price);
-      card_details.appendChild(price_parag);
-      card.appendChild(card_details);
+      col.appendChild(card);
+
+      var img = document.createElement('img');
+      img.src = json.Products[i].URL;
+      img.alt = json.Products[i].Caption;
+      img.setAttribute("class","img-fluid p-3")
+
+      card.appendChild(img);
+
+      var card_body = document.createElement("div");
+      card_body.setAttribute("class","card-body");
+
+      var title = document.createElement("h5");
+      title.setAttribute("class","card-title");
+      title.innerText = json.Products[i].TITLE;
+
+      var text = document.createElement("p");
+      text.setAttribute("class","card-text");
+      text.innerText = json.Products[i];
+
+      card_body.appendChild(title);
+      card_body.appendChild(text);
+
+      card.appendChild(card_body);
+
+      var card_footer = document.createElement("div");
+      card_footer.setAttribute("class","card-footer");
+
+
       
       var purchase = document.createElement('button');
       purchase.innerText = "Buy now";
@@ -87,13 +85,15 @@
         return function(){
             alert( param ); // <-- Your code here
         }
-        }
+        };
+
+      card_footer.appendChild(purchase);
+
+      card.appendChild(card_footer);
 
 
 
-      card.appendChild(purchase);
-      console.log(card,"this is card");
-      document.body.appendChild(card);
+
       };
       
       
