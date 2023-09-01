@@ -17,11 +17,11 @@
 
     <script type="text/javascript">
 
-      // function getclickname(obj)
-      // {
-      //   //By passing object as argument you can access all properties of that element
-      //   alert(obj.id);
-      // }
+      function getclickname(obj)
+      {
+        //By passing object as argument you can access all properties of that element
+        alert(obj.id);
+      }
 
       fetch('json/products.json').then(function(response) {
       response.json().then(function(json) {
@@ -81,8 +81,14 @@
       
       var purchase = document.createElement('button');
       purchase.innerText = "Buy now";
-      console.log(json.Products[i].ID)
-      purchase.addEventListener("click", function () {console.log(json.Products[i].ID);alert(json.Products[i].ID);})
+      purchase.onclick = doWithParam(json.Products[i].ID)
+      console.log(json.Products[i].ID);
+      function doWithParam( param ){
+        return function(){
+            alert( param ); // <-- Your code here
+        }
+        }
+
 
 
       card.appendChild(purchase);
