@@ -16,6 +16,13 @@
    
 
     <script type="text/javascript">
+
+      function getclickname(obj)
+      {
+        //By passing object as argument you can access all properties of that element
+        alert(obj.id);
+      }
+
       fetch('json/products.json').then(function(response) {
       response.json().then(function(json) {
       
@@ -74,7 +81,9 @@
       
       var purchase = document.createElement('button');
       purchase.innerText = "Buy now";
-      
+      purchase.onclick = getclickname(json.Products[i].Id);
+
+
       card.appendChild(purchase);
       console.log(card,"this is card");
       document.body.appendChild(card);
@@ -86,6 +95,7 @@
       
       
          Telegram.WebApp.ready();
+         purchase = document.getElementsByTagName("button");
       
          Telegram.WebApp.MainButton.setText('Choose').show().onClick(function () {
           const data = JSON.stringify({hex: colorPicker.color.hexString, rgb: colorPicker.color.rgb});
