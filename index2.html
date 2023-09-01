@@ -81,7 +81,7 @@
       
       var purchase = document.createElement('button');
       purchase.innerText = "Buy now";
-      purchase.onclick = getclickname(json.Products[i].Id);
+      purchase.addEventListener("click", function () {getclickname(json.Products[i].Id);})
 
 
       card.appendChild(purchase);
