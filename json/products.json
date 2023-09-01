@@ -1,9 +1,9 @@
 {
     "Products":
     [
-        {"Id":"1","URL":"images/01.png", "Caption":"Image 1","TITLE":"Versace Eros","desc":"Eau de Toilette"},
-        {"Id":"2","URL":"images/02.png", "Caption":"Image 2","TITLE":"Versace Eros","desc":"Eau de Toilette"},
-        {"Id":"3","URL":"images/03.png", "Caption":"Image 3","TITLE":"Versace Eros","desc":"Eau de Toilette"},
-        {"Id":"4","URL":"images/04.png", "Caption":"Image 4","TITLE":"Versace Eros","desc":"Eau de Toilette"}
+        {"ID":"1","URL":"images/01.png", "Caption":"Image 1","TITLE":"Versace Eros","desc":"Eau de Toilette"},
+        {"ID":"2","URL":"images/02.png", "Caption":"Image 2","TITLE":"Versace Eros","desc":"Eau de Toilette"},
+        {"ID":"3","URL":"images/03.png", "Caption":"Image 3","TITLE":"Versace Eros","desc":"Eau de Toilette"},
+        {"ID":"4","URL":"images/04.png", "Caption":"Image 4","TITLE":"Versace Eros","desc":"Eau de Toilette"}
     ]
 }
