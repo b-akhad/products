@@ -103,7 +103,7 @@
 
       var text = document.createElement("p");
       text.setAttribute("class","card-text");
-      text.innerText = json.Products[i];
+      text.innerText = "$2"
 
       card_body.appendChild(title);
       card_body.appendChild(text);
@@ -116,23 +116,25 @@
 
       var purchase = document.createElement('button');
       purchase.innerText = "Buy now";
-      purchase.onclick = doWithParam(json.Products[i].ID);
+      purchase.onclick = doWithParam(card_footer, purchase);
 
-      function doWithParam( param1){
-        console.log(this.purchase,"this purchase");
-        console.log(purchase,"purchase");
-        console.log('hello its me');
-
+      function doWithParam( card_footer,pur){
 
         return function(){
+            pur.setAttribute("hidden","hidden");
 
-            // var minus_btn = document.createElement("button");
-            // minus_btn.innerText = "-"
-            // minus_btn.setAttribute("class","btn-danger btn mr-3")
-            //
-            // var plus_btn = document.createElement("button");
-            // plus_btn.innerText = "+";
-            // plus_btn.setAttribute("class","btn-success btn ");
+
+
+            var minus_btn = document.createElement("button");
+            minus_btn.innerText = "-"
+            minus_btn.setAttribute("class","btn-danger btn mr-3")
+
+            var plus_btn = document.createElement("button");
+            plus_btn.innerText = "+";
+            plus_btn.setAttribute("class","btn-success btn ");
+
+            card_footer.appendChild(minus_btn);
+            card_footer.appendChild(plus_btn);
 
 
 
