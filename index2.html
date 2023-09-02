@@ -51,6 +51,7 @@
   </div>
     <script type="text/javascript">
       var products = [];
+
       function getclickname(obj)
       {
         //By passing object as argument you can access all properties of that element
@@ -65,10 +66,13 @@
       
       
       for(var i=0; i < json.Products.length; i++){
+
       
       var col = document.createElement('div');
       col.class = "col-md-4 col-6 mt-5";
       col.setAttribute("class","col-md-4 col-6 mt-5");
+
+      var c = 0
 
       row.appendChild(col);
 
@@ -78,6 +82,11 @@
       card.setAttribute("class","card");
 
       col.appendChild(card);
+
+      var badge = document.createElement('span');
+      badge.setAttribute("class","badge text-light ");
+      badge.innerText = c.toString();
+
 
       var img = document.createElement('img');
       img.src = json.Products[i].URL;
@@ -110,9 +119,37 @@
       purchase.innerText = "Buy now";
       purchase.onclick = doWithParam(json.Products[i].ID)
       console.log(json.Products[i].ID);
-      function doWithParam( param ){
+      function doWithParam( param1){
+
         return function(){
-            products.push(param)
+            console.log(card_footer);
+            purchase.setAttribute("hidden","hidden");
+
+
+            var minus_btn = document.createElement("button");
+            minus_btn.innerText = "-"
+            minus_btn.setAttribute("class","btn-danger btn mr-3")
+
+            var plus_btn = document.createElement("button");
+            plus.innerText = "+"
+            plus.setAttribute("class","btn-success btn ")
+
+
+            card_footer.appendChild(minus_btn);
+            card_footer.appendChild(plus_btn);
+
+
+
+
+
+
+
+
+            // var obj = {"product":param1,"count":1};
+            // var data = JSON.stringify(obj);
+            // products.push(data);
+
+
         }
         };
 
