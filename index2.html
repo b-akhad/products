@@ -113,17 +113,19 @@
 
       var card_footer = document.createElement("div");
       card_footer.setAttribute("class","card-footer");
+      card_footer.setAttribute('id',"card-footer")
 
 
       var purchase = document.createElement('button');
       purchase.innerText = "Buy now";
       purchase.onclick = doWithParam(json.Products[i].ID)
       console.log(json.Products[i].ID);
+
       function doWithParam( param1){
 
         return function(){
-            console.log(card_footer);
-            purchase.setAttribute("hidden","hidden");
+            this.purchase.setAttribute("hidden","hidden");
+            var footer = document.getElementById('card-footer')
 
 
             var minus_btn = document.createElement("button");
@@ -132,11 +134,13 @@
 
             var plus_btn = document.createElement("button");
             plus_btn.innerText = "+"
-            plus_btn.setAttribute("class","btn-success btn ")
+            plus_btn.setAttribute("class","btn-success btn ");
+
+            footer.appendChild(minus_btn);
+            footer.appendChild(plus_btn);
 
 
-            card_footer.appendChild(minus_btn);
-            card_footer.appendChild(plus_btn);
+
 
 
 
