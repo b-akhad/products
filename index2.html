@@ -140,6 +140,27 @@
         var minus_btn = document.createElement("button");
         minus_btn.innerText = "-"
         minus_btn.setAttribute("class","btn-danger btn mr-3 d-none")
+        minus_btn.onclick = subtract(badge,purchase,minus_btn,plus_btn);
+
+        function subtract(bad,pur,minus,plus){
+          return function (){
+
+            var quantity = bad.innerText;
+            var remain = parseInt(quantity,10) - 1;
+            if (remain === 0){
+              bad.classList.add('d-none');
+              plus.classList.add('d-none');
+              minus.classList.add('d-none');
+              pur.classList.remove('d-none');
+            }else{
+              bad.innerText = remain.toString();
+            }
+
+
+
+          }
+        }
+
 
         var plus_btn = document.createElement("button");
         plus_btn.innerText = "+";
