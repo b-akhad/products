@@ -62,8 +62,7 @@
       response.json().then(function(json) {
 
         var row = document.getElementById('row');
-      console.log(row);
-      
+
       
       for(var i=0; i < json.Products.length; i++){
 
@@ -117,14 +116,15 @@
 
       var purchase = document.createElement('button');
       purchase.innerText = "Buy now";
-      purchase.onclick = doWithParam(json.Products[i].ID)
-      console.log(json.Products[i].ID);
+      purchase.onclick = doWithParam(json.Products[i].ID);
 
       function doWithParam( param1){
-        console.log(this.purchase);
+        console.log(this.purchase,"this purchase");
+        console.log(purchase,"purchase");
+        console.log('hello its me');
+
 
         return function(){
-          console.log(this.purchase);
 
             // var minus_btn = document.createElement("button");
             // minus_btn.innerText = "-"
