@@ -106,6 +106,8 @@
       var badge = document.createElement('span');
       badge.setAttribute("class","badge text-light d-none");
 
+      card.appendChild(badge);
+
 
       var img = document.createElement('img');
       img.src = json.Products[i].URL;
@@ -152,8 +154,8 @@
 
         return function(){
             pur.setAttribute("hidden","hidden");
-            minus.classList.remove('hide');
-            plus.classList.remove('hide');
+            minus.classList.remove('d-none');
+            plus.classList.remove('d-none');
             bad.classList.remove('d-none');
             bad.innerText = "1";
 
