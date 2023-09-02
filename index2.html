@@ -18,16 +18,22 @@
       width: 100%;
       height: 40px;
       color: #fff;
-      background-color: #1b2430;
+      /*background-color: #1b2430;*/
       border-radius: 3px;
       font-size: 18px;
       font-weight: 600;
       cursor: pointer;
       transition: 0.5s;
     }
-    .card-footer button:hover {
+    .btn-add{
+      background-color: #1b2430;
+
+    }
+    .btn-add:hover {
       background-color: #aa0000;
     }
+
+
 
     .card img{
       max-height: 245px;
@@ -111,50 +117,37 @@
       card.appendChild(card_body);
 
       var card_footer = document.createElement("div");
-      card_footer.setAttribute("class","card-footer");
+      card_footer.setAttribute("class","card-footer d-flex justify-content-around");
 
 
-      var purchase = document.createElement('button');
-      purchase.innerText = "Buy now";
-      purchase.onclick = doWithParam(card_footer, purchase);
 
-      function doWithParam( card_footer,pur){
+        var minus_btn = document.createElement("button");
+        minus_btn.innerText = "-"
+        minus_btn.setAttribute("class","btn-danger btn mr-3 hide")
+
+        var plus_btn = document.createElement("button");
+        plus_btn.innerText = "+";
+        plus_btn.setAttribute("class","btn-success btn hide");
+
+        var purchase = document.createElement('button');
+        purchase.innerText = "Buy now";
+        purchase.setAttribute('class',"btn-add")
+        purchase.onclick = doWithParam(minus_btn, plus_btn, purchase);
+
+      function doWithParam(minus,plus,pur){
 
         return function(){
             pur.setAttribute("hidden","hidden");
-
-
-
-            var minus_btn = document.createElement("button");
-            minus_btn.innerText = "-"
-            minus_btn.setAttribute("class","btn-danger btn mr-3")
-
-            var plus_btn = document.createElement("button");
-            plus_btn.innerText = "+";
-            plus_btn.setAttribute("class","btn-success btn ");
-
-            card_footer.appendChild(minus_btn);
-            card_footer.appendChild(plus_btn);
-
-
-
-
-
-
-
-
-
-
-
-            // var obj = {"product":param1,"count":1};
-            // var data = JSON.stringify(obj);
-            // products.push(data);
+            minus.classList.remove('hide');
+            plus.classList.remove('hide');
 
 
         }
         };
 
-      card_footer.appendChild(purchase);
+        card_footer.appendChild(purchase);
+        card_footer.appendChild(minus_btn);
+        card_footer.appendChild(plus_btn);
 
       card.appendChild(card_footer);
 
