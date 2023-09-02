@@ -45,6 +45,21 @@
       }
     }
 
+    .badge {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      top: 5px;
+      right: 5px;
+      border: 1px solid black;
+      border-radius: 50%;
+      font-size: 18px;
+      background-color: #2c67e7;
+      /*background-color: #1b2430;*/
+
+
+    }
+
 
   </style>
   <body>
@@ -89,8 +104,7 @@
       col.appendChild(card);
 
       var badge = document.createElement('span');
-      badge.setAttribute("class","badge text-light ");
-      badge.innerText = c.toString();
+      badge.setAttribute("class","badge text-light d-none");
 
 
       var img = document.createElement('img');
@@ -123,23 +137,25 @@
 
         var minus_btn = document.createElement("button");
         minus_btn.innerText = "-"
-        minus_btn.setAttribute("class","btn-danger btn mr-3 hide")
+        minus_btn.setAttribute("class","btn-danger btn mr-3 d-none")
 
         var plus_btn = document.createElement("button");
         plus_btn.innerText = "+";
-        plus_btn.setAttribute("class","btn-success btn hide");
+        plus_btn.setAttribute("class","btn-success btn d-none");
 
         var purchase = document.createElement('button');
         purchase.innerText = "Buy now";
         purchase.setAttribute('class',"btn-add")
-        purchase.onclick = doWithParam(minus_btn, plus_btn, purchase);
+        purchase.onclick = doWithParam(minus_btn, plus_btn, purchase, bad);
 
-      function doWithParam(minus,plus,pur){
+      function doWithParam(minus,plus,pur, bad){
 
         return function(){
             pur.setAttribute("hidden","hidden");
             minus.classList.remove('hide');
             plus.classList.remove('hide');
+            bad.classList.remove('d-none');
+            bad.innerText = "1";
 
 
         }
