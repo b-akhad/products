@@ -151,13 +151,14 @@
               plus.classList.add('d-none');
               minus.classList.add('d-none');
               pur.removeAttribute('hidden','hidden');
+
+
+            }else{
+              bad.innerText = remain.toString();
               var index = products.indexOf(product_id);
               if (index !== -1){
                 products.splice(index);
               }
-
-            }else{
-              bad.innerText = remain.toString();
             }
 
 
