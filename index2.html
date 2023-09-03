@@ -190,7 +190,7 @@
               var obj = products[i];
               console.log(products,"before");
 
-              if (products.indexOf(obj.id) === product_id) {
+              if (obj.id === product_id) {
                 obj.count = obj.count + 1;
                 console.log(products,"updated");
                 break;
