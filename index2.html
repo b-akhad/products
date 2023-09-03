@@ -149,13 +149,13 @@
             for (var i = 0; i < products.length; i++) {
               var obj = products[i];
 
-              if (products.indexOf(obj.id) !== -1) {
+              if (obj.id !== product_id) {
                 obj.count -= 1;
 
                 if (obj.count === 0){
                   products.splice(i,1);
-                  i--;
                 }
+                break;
 
               }
             }
