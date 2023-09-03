@@ -146,15 +146,21 @@
           return function (){
 
             var quantity = bad.innerText;
-            var index = products.indexOf(product_id);
-            console.log(index);
-            if (index !== -1){
-              products.splice(index,1);
-              console.log(products);
+            for (var i = 0; i < products.length; i++) {
+              var obj = products[i];
 
+              if (products.indexOf(obj.id) !== -1) {
+                obj.count -= 1;
+
+                if (obj.count === 0){
+                  products.splice(i,1);
+                }
+
+              }
             }
+
             var remain = parseInt(quantity,10) - 1;
-            total_price = total_price -  parseInt(text.innerText)
+            total_price = total_price -  parseInt(text.innerText);
             if (remain === 0){
               bad.classList.add('d-none');
               plus.classList.add('d-none');
@@ -178,7 +184,15 @@
             var quantity = bad.innerText
             var calculated = parseInt(quantity,10) + 1;
             bad.innerText = calculated.toString();
-            products.push(product_id);
+
+            for (var i = 0; i < products.length; i++) {
+              var obj = products[i];
+
+              if (products.indexOf(obj.id) !== -1) {
+                obj.count += 1;
+
+              }
+            }
             total_price = total_price + parseInt(text.innerText)
           }
 
@@ -205,7 +219,7 @@
             plus.classList.remove('d-none');
             bad.classList.remove('d-none');
             bad.innerText = "1";
-            products.push(product_id);
+            products.push({"id":product_id,"count":1,"price":text.innerText});
             total_price = total_price + parseInt(text.innerText)
 
 
