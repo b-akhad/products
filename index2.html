@@ -140,7 +140,6 @@
         var minus_btn = document.createElement("button");
         minus_btn.innerText = "-"
         minus_btn.setAttribute("class","btn-danger btn mr-3 d-none")
-        minus_btn.onclick = subtract(badge,purchase,minus_btn,plus_btn);
 
         function subtract(bad,pur,minus,plus){
           return function (){
@@ -151,7 +150,7 @@
               bad.classList.add('d-none');
               plus.classList.add('d-none');
               minus.classList.add('d-none');
-              pur.classList.remove('d-none');
+              pur.removeAttribute('hidden','hidden')
             }else{
               bad.innerText = remain.toString();
             }
@@ -183,6 +182,9 @@
 
         }
         };
+
+        minus_btn.onclick = subtract(badge,purchase,minus_btn,plus_btn);
+
 
         card_footer.appendChild(purchase);
         card_footer.appendChild(minus_btn);
