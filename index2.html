@@ -72,6 +72,7 @@
   </div>
     <script type="text/javascript">
       var products = [];
+      var total_price = 0
 
       function getclickname(obj)
       {
@@ -126,7 +127,7 @@
 
       var text = document.createElement("p");
       text.setAttribute("class","card-text");
-      text.innerText = "$2"
+      text.innerText = "25000"
 
       card_body.appendChild(title);
       card_body.appendChild(text);
@@ -141,7 +142,7 @@
         minus_btn.innerText = "-"
         minus_btn.setAttribute("class","btn-danger btn mr-3 d-none")
 
-        function subtract(product_id,bad,pur,minus,plus){
+        function subtract(product_id,bad,pur,minus,plus,text){
           return function (){
 
             var quantity = bad.innerText;
@@ -153,6 +154,7 @@
 
             }
             var remain = parseInt(quantity,10) - 1;
+            total_price = total_price -  parseInt(text.innerText)
             if (remain === 0){
               bad.classList.add('d-none');
               plus.classList.add('d-none');
@@ -171,12 +173,13 @@
         }
 
 
-        function add(product_id,bad){
+        function add(product_id,bad,text){
           return function () {
             var quantity = bad.innerText
             var calculated = parseInt(quantity,10) + 1;
             bad.innerText = calculated.toString();
             products.push(product_id);
+            total_price += parseInt(text.innerText)
           }
 
         }
@@ -184,7 +187,7 @@
 
         var plus_btn = document.createElement("button");
         plus_btn.innerText = "+";
-        plus_btn.onclick = add(prod_id,badge);
+        plus_btn.onclick = add(prod_id,badge,text);
         plus_btn.setAttribute("class","btn-success btn d-none");
 
 
@@ -192,9 +195,9 @@
         var purchase = document.createElement('button');
         purchase.innerText = "Buy now";
         purchase.setAttribute('class',"btn-add");
-        purchase.onclick = doWithParam(prod_id,minus_btn, plus_btn, purchase, badge);
+        purchase.onclick = doWithParam(prod_id,minus_btn, plus_btn, purchase, badge, text);
 
-      function doWithParam(product_id,minus,plus,pur, bad){
+      function doWithParam(product_id,minus,plus,pur, bad, text){
 
         return function(){
             pur.setAttribute("hidden","hidden");
@@ -203,12 +206,13 @@
             bad.classList.remove('d-none');
             bad.innerText = "1";
             products.push(product_id);
+            total_price = total_price - parseInt(text.innerText)
 
 
         }
         };
 
-        minus_btn.onclick = subtract(prod_id,badge,purchase,minus_btn,plus_btn);
+        minus_btn.onclick = subtract(prod_id,badge,purchase,minus_btn,plus_btn,text);
 
 
         card_footer.appendChild(purchase);
@@ -229,8 +233,8 @@
 
          Telegram.WebApp.MainButton.setText('Choose').show().onClick(function () {
 
-          // const data = JSON.stringify(products);
-          Telegram.WebApp.sendData(products);
+          const data = JSON.stringify({"products":products,'total':total_price});
+          Telegram.WebApp.sendData(data);
           Telegram.WebApp.close();
       
       });
