@@ -161,8 +161,19 @@
         }
 
 
+        function add(bad){
+          return function () {
+            var quantity = bad.innerText
+            var calculated = parseInt(quantity,10) + 1;
+            bad.innerText = calculated.toString();
+          }
+
+        }
+
+
         var plus_btn = document.createElement("button");
         plus_btn.innerText = "+";
+        plus_btn.onclick = add(badge);
         plus_btn.setAttribute("class","btn-success btn d-none");
 
         var purchase = document.createElement('button');
