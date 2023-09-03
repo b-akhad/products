@@ -179,7 +179,7 @@
             var calculated = parseInt(quantity,10) + 1;
             bad.innerText = calculated.toString();
             products.push(product_id);
-            total_price += parseInt(text.innerText)
+            total_price = total_price + parseInt(text.innerText)
           }
 
         }
@@ -206,7 +206,7 @@
             bad.classList.remove('d-none');
             bad.innerText = "1";
             products.push(product_id);
-            total_price = total_price - parseInt(text.innerText)
+            total_price = total_price + parseInt(text.innerText)
 
 
         }
