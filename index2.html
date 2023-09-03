@@ -154,6 +154,7 @@
 
                 if (obj.count === 0){
                   products.splice(i,1);
+                  i--;
                 }
 
               }
@@ -189,7 +190,7 @@
               var obj = products[i];
 
               if (products.indexOf(obj.id) !== -1) {
-                obj.count += 1;
+                obj.count = obj.count + 1;
 
               }
             }
