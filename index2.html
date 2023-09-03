@@ -215,9 +215,9 @@
         var purchase = document.createElement('button');
         purchase.innerText = "Buy now";
         purchase.setAttribute('class',"btn-add");
-        purchase.onclick = doWithParam(prod_id,minus_btn, plus_btn, purchase, badge, text);
+        purchase.onclick = doWithParam(prod_id,minus_btn, plus_btn, purchase, badge, title,text);
 
-      function doWithParam(product_id,minus,plus,pur, bad, text){
+      function doWithParam(product_id,minus,plus,pur, bad, title,text){
 
         return function(){
             pur.setAttribute("hidden","hidden");
@@ -225,7 +225,7 @@
             plus.classList.remove('d-none');
             bad.classList.remove('d-none');
             bad.innerText = "1";
-            products.push({"id":product_id,"count":1,"price":text.innerText});
+            products.push({"id":product_id,"title":title.innerText,"count":1,"price":text.innerText});
             total_price = total_price + parseInt(text.innerText)
 
 
